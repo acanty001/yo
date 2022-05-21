@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
+    "heroku-postbuild": "echo Skip build on Heroku",
     "serve": "webpack serve",
     "dev": "nodemon server.js",
     "start": "node server.js"
