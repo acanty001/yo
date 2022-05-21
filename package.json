@@ -7,7 +7,7 @@
     "build": "webpack --mode production",
     "serve": "webpack serve",
     "dev": "nodemon server.js",
-    "start": "webpack -p && node server.js"
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
