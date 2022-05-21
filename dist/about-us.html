@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta name="author" content="aikyu canty">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+  <link rel="icon" href="data:,">
+  <title>So Posh</title>
+  <script type="text/javascript" src="https://sandbox.web.squarecdn.com/v1/square.js"></script>
+  <!-- <script>
+    const appId = 'sandbox-sq0idb-BeieQlR1r7hN3nikF67FBQ';
+    const locationId = 'L408XYCWNRJDP';
+    const cardClassSelectors = {
+       input: {
+        backgroundColor: '#F7F8F9',
+        color: '#373F4A',
+        fontFamily: 'Helvetica Neue',
+        fontSize: '16px',
+        fontWeight: 'normal'
+      },
+      'input.is-focus': {
+        backgroundColor: '#F7F8F9',
+        color: '#3X3F4A',
+        fontFamily: 'Helvetica Neue',
+        fontSize: '16px',
+        fontWeight: 'normal'
+      },
+      '.input-container': {
+        borderColor: 'lightgrey',
+        borderWidth: '1px',
+      },
+      '.input-container.is-focus': {
+        borderColor: '#cc0023',
+        borderWidth: '0 0 2px 0',
+      },
+      '.input-container.is-error': {
+        borderColor: '#006aff',
+        borderWidth: '0 0 2px 0',
+      },
+      '.message-icon': {
+        color: 'green',
+      },
+      // You can use media queries with valid selectors:
+      '@media screen and (max-width: 600px)': {
+        input: {
+          'fontSize': '12px',
+        }
+      },
+      '@media only screen and (orientation: portrait)': {
+        '.message-text': {
+          'color': 'transparent',
+        }
+      }
+    }
+    let responseJson
+
+    async function initializeCard(payments) {
+      const cardOptions = getCardOptions();
+      const card = await payments.card(cardOptions);
+      await card.attach('#booking-modal-s2-card-container');
+
+      return card;
+    }
+
+    function getCardOptions() {
+      return {
+        "postalCode" : "12345",
+        "style": {
+          "input": {
+            'backgroundColor': '#F7F8F9',
+            'color': '#373F4A',
+            'fontFamily': 'Helvetica Neue',
+            'fontSize': '16px',
+            'fontWeight': 'normal'
+          },
+          // You can use media queries with valid selectors:
+          "@media screen and (max-width: 600px)": {
+            "input": {
+              "fontSize": "12px",
+            }
+          }
+        },
+      };
+    };
+
+    async function createPayment(token) {
+      const bodyData = {
+        given_name: JSON.parse(localStorage.getItem('currentUser')).given_name,
+        family_name: JSON.parse(localStorage.getItem('currentUser')).family_name,
+        email_address: JSON.parse(localStorage.getItem('currentUser')).email_address,
+        locationId,
+        sourceId: token,
+      };
+
+      const paymentResponse = await fetch(`/payment/${JSON.stringify(bodyData)}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+
+      if (paymentResponse.ok) {
+        // console.log('its okay');
+        let responseClone = paymentResponse.clone()
+        responseJson = await responseClone.json()
+        console.log(responseJson)
+        return paymentResponse.json();
+      }
+
+      const errorBody = await paymentResponse.text();
+      throw new Error(errorBody);
+    }
+
+    async function tokenize(paymentMethod) {
+      const tokenResult = await paymentMethod.tokenize();
+      if (tokenResult.status === 'OK') {
+        return tokenResult.token;
+      } else {
+        let errorMessage = `Tokenization failed with status: ${tokenResult.status}`;
+        if (tokenResult.errors) {
+          errorMessage += ` and errors: ${JSON.stringify(
+            tokenResult.errors
+          )}`;
+        }
+
+        throw new Error(errorMessage);
+      }
+    }
+
+    // status is either SUCCESS or FAILURE;
+    function displayPaymentResults(status) {
+      const statusContainer = document.getElementById(
+        'booking-modal-s2-payment-status-container'
+      );
+      if (status === 'SUCCESS') {
+        statusContainer.classList.remove('is-failure');
+        statusContainer.classList.add('is-success');
+      } else {
+        statusContainer.classList.remove('is-success');
+        statusContainer.classList.add('is-failure');
+      }
+
+      statusContainer.style.visibility = 'visible';
+    }
+
+    document.addEventListener('DOMContentLoaded', async function () {
+      if (!window.Square) {
+        throw new Error('Square.js failed to load properly');
+      }
+
+      let payments;
+      try {
+        payments = window.Square.payments(appId, locationId);
+      } catch {
+        const statusContainer = document.getElementById(
+          'payment-status-container'
+        );
+        statusContainer.className = 'missing-credentials';
+        statusContainer.style.visibility = 'visible';
+        return;
+      }
+
+      let card;
+      try {
+        card = await initializeCard(payments);
+      } catch (e) {
+        console.error('Initializing Card failed', e);
+        return;
+      }
+
+      // Checkpoint 2.
+      async function handlePaymentMethodSubmission(event, paymentMethod) {
+        event.preventDefault();
+
+        try {
+          // disable the submit button as we await tokenization and make a payment request.
+          cardButton.disabled = true;
+          const token = await tokenize(paymentMethod);
+          const paymentResults = await createPayment(token);
+          displayPaymentResults('SUCCESS');
+
+          console.debug('Payment Success', paymentResults);
+        } catch (e) {
+          cardButton.disabled = false;
+          displayPaymentResults('FAILURE');
+          console.error(e.message);
+        }
+      }
+
+      const cardButton = document.getElementById('booking-modal-s2-card-button');
+      cardButton.addEventListener('click', async function (event) {
+        await handlePaymentMethodSubmission(event, card);
+      });
+    });
+  </script> -->
+</head>
+<body id='main-body'>
+
+  <!-- page loader -->
+  <div class="page-loader hide-container">
+    <div class="page-loader-gif"></div>
+  </div>
+
+  <!-- header -->
+  <header>
+
+    <div class="header-left">
+
+      <!-- company logo -->
+      <a id='company-logo' href='./index.html' class="company-logo"></a>
+
+      <!-- company options -->
+      <div class="company-options">
+
+        <a id='company-options-title' class='company-options-ele'>Book a Service</a>
+        <i id='company-options-icon' class="company-options-ele bi bi-chevron-down"></i>
+
+        <!-- company-drop-down -->
+        <div id='company-options-drop-down' class="company-options-drop-down hide-container">
+          <ul>
+              <!-- <i id='company-options-drop-down-icon-1' class="fas fa-phone-square-alt"></i> -->
+              <div id='company-options-1-drop-down' class="company-options-1-drop-down">
+                <li>   
+                  <i class="bi bi-phone"></i>
+                  <p>Phone Consultation</p>
+                </li>
+              </div>
+            
+              <!-- <i id='company-options-drop-down-icon-2' class="fas fa-home"></i> -->
+              <div id='company-options-2-drop-down' class="company-options-2-drop-down">
+                <li>
+                  <i class="bi bi-house"></i>
+                  <p>In-Home Consultation</p>
+                </li>
+              </div>
+            
+              <!-- <i id='company-options-drop-down-icon-3' class="far fa-handshake"></i> -->
+              <div id='company-options-3-drop-down' class="company-options-3-drop-down">
+                <li>
+                  <i class="bi bi-briefcase"></i>
+                  <p>Posh Session</p>
+                </li>
+              </div>
+              <!-- <i id='company-options-drop-down-icon-4' class="fas fa-concierge-bell"></i> -->
+              <div id='company-options-4-drop-down' class="company-options-4-drop-down">
+                <li>  
+                  <i class="bi bi-geo"></i>
+                  <p>Unique Session</p>
+                </li>
+              </div>
+              <div id='company-options-5-drop-down' class="company-options-5-drop-down">
+                <li>  
+                  <i class="bi bi-calendar2-event"></i>
+                  <p>Concierge Session</p>
+                </li>
+              </div>
+          </ul>
+        </div>
+
+        
+
+      </div>
+
+    </div>
+
+    <div class="header-right">
+
+      <!-- company any -->
+      <div id='company-any' class="company-any">
+        <i class="bi bi-easel"></i>
+        <a>Our Work</a>
+      </div>
+      
+     
+
+      <!-- company languages -->
+      <div class="company-languages">
+
+        <i id='company-languages-icon' class="company-languages-ele bi bi-globe"></i>
+        <a id='company-languages-title' class='company-languages-ele'>Languages</a>
+
+        <!--company languages drop down-->
+        <div id='company-languages-drop-down' class="company-languages-drop-down hide-container">
+          <ul>
+            <li>
+              <div class="company-languages-1-drop-down">
+                <i id='company-languages-drop-down-icon-1' class="bi bi-globe"></i>
+                <p id='company-languages-drop-down-title-1' href="">Spanish</p>
+              </div>
+            </li>
+            <li>
+              <div class="company-languages-2-drop-down">
+                <i id='company-languages-drop-down-icon-1' class="bi bi-globe"></i>
+                <p id='company-languages-drop-down-title-1' href="">Japanese</p>
+              </div>
+            </li>
+            <li>
+              <div class="company-languages-3-drop-down">
+                <i id='company-languages-drop-down-icon-1' class="bi bi-globe"></i>
+                <p id='company-languages-drop-down-title-1' href="">Mandarin</p>
+              </div>
+            </li>
+            <li>
+              <div class="company-languages-4-drop-down">
+                <i id='company-languages-drop-down-icon-1' class="bi bi-globe"></i>
+                <p id='company-languages-drop-down-title-1' href="">French</p>
+              </div>
+            </li>
+            <li>
+              <div class="company-languages-5-drop-down">
+                <i id='company-languages-drop-down-icon-1' class="bi bi-globe"></i>
+                <p id='company-languages-drop-down-title-1' href="">Chinese</p>
+              </div>
+            </li>
+            <li>
+              <div class="company-languages-6-drop-down">
+                <i id='company-languages-drop-down-icon-1' class="bi bi-globe"></i>
+                <p id='company-languages-drop-down-title-1' href="">Arabic</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+      
+
+
+      <!-- company notifications and profile -->
+      <div class="company-noti-prof">
+      <!-- company call to action -->
+      <a id='company-call-to-action' class='company-call-to-action'><i class="bi bi-telephone-inbound-fill"></i></a>
+
+        <div class="user-access-profile-icon">
+          <i id='user-access-profile' class="bi bi-person-circle"></i>
+          <!-- <div class="lds-ripple"><div></div><div></div></div> -->
+
+          <!-- user profile drop down (logged in) -->
+          <div id='user-access-profile-drop-down' class="user-access-profile-drop-down hide-container">
+
+            <ul>
+              <div id='user-access-profile-appointment' class="user-access-profile-2-drop-down hide-container">
+                <i class="bi bi-calendar-week"></i>
+                <li><p>Appointments</p></li>
+              </div>
+              <div id='user-access-profile-myaccount' class="user-access-profile-3-drop-down hide-container">
+                <i class="bi bi-person"></i>
+                <li><p>My Account</p></li>
+              </div>
+              <div id='signup-btn-1' class="user-access-profile-5-drop-down">
+                <i class="bi bi-journal-arrow-up"></i>
+                <li><p>Join</p></li>
+              </div>
+              <div id='login-btn-1' class="user-access-profile-4-drop-down">
+                <i class="bi bi-door-open"></i>
+                <li><p>Login</p></li>
+              </div>
+              <div id='signout-btn-1' class="user-access-profile-6-drop-down hide-container">
+                <i class="bi bi-door-open-fill"></i>
+                <li><p>Log Out</p></li>
+              </div>
+            </ul>
+
+          </div> 
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
+  <div class="cq-title-1">
+    <h1>Before & After</h1>
+  </div>
+
+  
+
+
+  <footer>
+
+    <div class="footer-company-logo-socials">
+
+      <div class="company-sponsors"></div>
+
+      <div class="company-nav">
+        <h1>Hours</h1>
+        <ul>
+          <li><a href="">M-F: 8 am - 5 pm</a></li>
+          <li><a href="">S&S: Closed</a></li>
+        </ul>     
+      </div>
+
+      <div class="company-nav">
+        <h1>Policies</h1>
+        <ul>
+          <li><a href="">Terms & Conditions</a></li>
+          <li><a href="">Policy</a></li>
+        </ul>     
+      </div>
+
+      <div class="company-nav">
+        <h1>Contact</h1>
+        <ul>
+          <li><a href="">Careers</a></li>
+          <li><a href="">Support</a></li>
+        </ul>     
+      </div>
+
+      
+
+      <div class="f-company-logo">
+        <!-- <a href="./index.html">
+          <img src="./img/frame-8.svg" alt="">
+        </a> -->
+        <div class="company-socials">
+          <!-- <i class="fab fa-twitter-square"></i> -->
+          <a href="https://www.instagram.com/soposhorg/" target="_blank"><i class="fab fa-instagram-square"></i></a>
+          <!-- <i class="fab fa-linkedin"></i> -->
+        </div>
+      </div>
+    
+    </div>
+
+    <div class="company-special-info">
+      <h1>&copy; 2020 by So Posh: A Concierge Organizing Company </h1>
+      <!-- <div class="company-special-info-tp">
+        <a href="">Terms and Conditions</a>
+        <a href="">Policy</a>
+      </div> -->
+
+    </div>
+    
+  </footer>
+
+  <script src="./bundle.js"></script>
+</body>
+</html>

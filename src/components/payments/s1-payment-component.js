@@ -1,0 +1,1 @@
+// no s1 payment component -- service is free!
