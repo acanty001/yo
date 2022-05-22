@@ -10033,6 +10033,25 @@ button {
     align-content: center;
   }
 
+  .before-and-after-contents-card-1
+  .before-and-after-contents-card-2
+  .before-and-after-contents-card-3
+  .before-and-after-contents-card-4
+  .before-and-after-contents-card-5
+  .before-and-after-contents-card-6
+  .before-and-after-contents-card-7
+  .before-and-after-contents-card-8
+  .before-and-after-contents-card-9
+  .before-and-after-contents-card-10
+  .before-and-after-contents-card-11
+  .before-and-after-contents-card-12
+  .before-and-after-contents-card-13
+  .before-and-after-contents-card-14
+  .before-and-after-contents-card-15 {
+    width: 150px;
+    height: 150px;
+  }
+
   /* faqs */
   .faqs-reviews-container {
     margin: 15em auto 0rem;
