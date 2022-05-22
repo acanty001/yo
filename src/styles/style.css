@@ -9994,7 +9994,7 @@ button {
   /* before&after */
   .before-and-after-container {
     width: 100%;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
   }
 
   .before-and-after-card-1,
@@ -10340,6 +10340,11 @@ button {
     background-size: cover;
     width: 3em;
     height: 3em;
+  }
+
+  /* faq */
+  .faqs-reviews-container {
+    margin: 55rem auto 0rem;
   }
 
 }

@@ -1,8 +1,6 @@
 const myApp = require('../../index')
 
-const domainName1 = 'http://www.googlywiggly.com'
-const domainName2 = 'http://www.googlywiggly.com/'
-const domainName3 = 'http://www.googlywiggly.com/index.html'
+const domainName = 'http://www.googlywiggly.com'
 
 const faqQuestion1 = document.getElementById('faq-question-1')
 const faqQuestion2 = document.getElementById('faq-question-2')
@@ -34,7 +32,7 @@ class Faqs {
   }
 
   questionClick() {
-    if (window.location.href === domainName1 || window.location.href === domainName2 || window.location.href === domainName3) {
+    if (window.location.href === `${domainName}/index.html` || window.location.href === `${domainName}/` || window.location.href === `${domainName}/#how-we-operate` || window.location.href === domainName) {
       for (let i = 0; i < faqQuestionArr.length; i++) {
         faqQuestionArr[i].addEventListener('click', () => {
           for (let kyu = 0; kyu < faqQuestionArr.length; kyu++) {

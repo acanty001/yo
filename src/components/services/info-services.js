@@ -1,8 +1,6 @@
 const myApp = require('../../index.js')
 
-const domainName1 = 'http://www.googlywiggly.com'
-const domainName2 = 'http://www.googlywiggly.com/'
-const domainName3 = 'http://www.googlywiggly.com/index.html'
+const domainName = 'http://www.googlywiggly.com'
 
 // info service arrows
 const infoServiceLeftArrow = document.getElementById('info-services-left-arrow')
@@ -76,9 +74,9 @@ class InfoServices {
 
   // info services arrows
   infoServiceArrows() {
-    console.log(domainName1)
+    console.log(domainName)
     console.log(window.location.href)
-    if (window.location.href === domainName1 || window.location.href === domainName2 || window.location.href === domainName3) {
+    if (window.location.href === `${domainName}/index.html` || window.location.href === `${domainName}/` || window.location.href === `${domainName}/#how-we-operate` || window.location.href === domainName) {
       console.log('the window icons are alive baby')
           // style arrow icons
       if (infoServiceArrowCount === 0) {
@@ -150,7 +148,7 @@ class InfoServices {
 
   // service 1
   service1MoreInfo() {
-    if (window.location.href === domainName1 || window.location.href === domainName2 || window.location.href === domainName3) {
+    if (window.location.href === `${domainName}/index.html` || window.location.href === `${domainName}/` || window.location.href === `${domainName}/#how-we-operate` || window.location.href === domainName) {
       service1InfoModalBtn.addEventListener('click', () => {
         console.log('yoo')
         service1InfoModal.className = 'service-1-info-modal'
@@ -178,7 +176,7 @@ class InfoServices {
 
   // service 2
   service2MoreInfo() {
-    if (window.location.href === domainName1 || window.location.href === domainName2 || window.location.href === domainName3) {
+    if (window.location.href === `${domainName}/index.html` || window.location.href === `${domainName}/` || window.location.href === `${domainName}/#how-we-operate` || window.location.href === domainName) {
       service2InfoModalBtn.addEventListener('click', () => {
         service2InfoModal.className = 'service-2-info-modal'
 
@@ -205,7 +203,7 @@ class InfoServices {
 
   // service 3
   service3MoreInfo() {
-    if (window.location.href === domainName1 || window.location.href === domainName2 || window.location.href === domainName3) {
+    if (window.location.href === `${domainName}/index.html` || window.location.href === `${domainName}/` || window.location.href === `${domainName}/#how-we-operate` || window.location.href === domainName) {
       service3InfoModalBtn.addEventListener('click', () => {
         service3InfoModal.className = 'service-3-info-modal'
 
@@ -232,7 +230,7 @@ class InfoServices {
 
   // service 4
   service4MoreInfo() {
-    if (window.location.href === domainName1 || window.location.href === domainName2 || window.location.href === domainName3) {
+    if (window.location.href === `${domainName}/index.html` || window.location.href === `${domainName}/` || window.location.href === `${domainName}/#how-we-operate` || window.location.href === domainName) {
       service4InfoModalBtn.addEventListener('click', () => {
         service4InfoModal.className = 'service-4-info-modal'
 
@@ -259,7 +257,7 @@ class InfoServices {
 
   // service 5
   service5MoreInfo() {
-    if (window.location.href === domainName1 || window.location.href === domainName2 || window.location.href === domainName3) {
+    if (window.location.href === `${domainName}/index.html` || window.location.href === `${domainName}/` || window.location.href === `${domainName}/#how-we-operate` || window.location.href === domainName) {
       service5InfoModalBtn.addEventListener('click', () => {
         service5InfoModal.className = 'service-5-info-modal'
 

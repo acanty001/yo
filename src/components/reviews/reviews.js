@@ -1,9 +1,7 @@
 const myApp = require('../../index.js')
 const { v4: uuidv4 } = require('uuid')
 
-const domainName1 = 'http://www.googlywiggly.com'
-const domainName2 = 'http://www.googlywiggly.com/'
-const domainName3 = 'http://www.googlywiggly.com/index.html'
+const domainName = 'http://www.googlywiggly.com'
 
 const reviewTextArea = document.getElementById('review-textarea')
 const reviewSubmitBtn = document.getElementById('review-submit')
@@ -33,7 +31,7 @@ class Reviews {
   }
 
   reviewTextArea() {
-    if (window.location.href === domainName1 || window.location.href === domainName2 || window.location.href === domainName3) {
+    if (window.location.href === `${domainName}/index.html` || window.location.href === `${domainName}/` || window.location.href === `${domainName}/#how-we-operate` || window.location.href === domainName) {
       reviewTextArea.addEventListener('keydown', () => {
         if (starsSelected && reviewTextArea.value.length > 0) {
           reviewSubmitBtn.style.backgroundColor = 'rgb(240, 94, 124)'
@@ -51,7 +49,7 @@ class Reviews {
   }
 
   reviewStars() {
-    if (window.location.href === domainName1 || window.location.href === domainName2 || window.location.href === domainName3) {
+    if (window.location.href === `${domainName}/index.html` || window.location.href === `${domainName}/` || window.location.href === `${domainName}/#how-we-operate` || window.location.href === domainName) {
       // "mouseover"
       for (let i = 0; i < reviewStarArr.length; i++) {
         reviewStarArr[i].addEventListener('mouseover', (event) => {
@@ -103,7 +101,7 @@ class Reviews {
   }
 
   reviewSubmitBtn() {
-    if (window.location.href === domainName1 || window.location.href === domainName2 || window.location.href === domainName3){
+    if (window.location.href === `${domainName}/index.html` || window.location.href === `${domainName}/` || window.location.href === `${domainName}/#how-we-operate` || window.location.href === domainName){
       reviewSubmitBtn.addEventListener('mouseover', () => {
         if (reviewSubmitBtn.style.backgroundColor === 'rgb(113, 113, 113)') {
           reviewSubmitBtn.style.cursor = 'not-allowed'
