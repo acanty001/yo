@@ -151,8 +151,11 @@ class Reviews {
             console.log(update_mongodb_res)
             reviewTextArea.value = ''
             for (let i = 0; i < reviewStarArr.length; i++) {
-              reviewStarArr[i].style.backgroundColor = ''
+              reviewStarArr[i].className = 'review-stars-icon bi bi-star'
             }
+            getCustomerData()
+              .then(() => { console.log('getCustomerData() has been sent to the server') })
+              .catch((error) => { console.log(error) })
           }
 
           // send review to company email
