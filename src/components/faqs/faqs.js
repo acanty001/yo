@@ -1,8 +1,8 @@
 const myApp = require('../../index')
 
-const domainName1 = 'http://localhost:3000'
-const domainName2 = 'http://localhost:3000/'
-const domainName3 = 'http://localhost:3000/index.html'
+const domainName1 = 'http://www.googlywiggly.com'
+const domainName2 = 'http://www.googlywiggly.com/'
+const domainName3 = 'http://www.googlywiggly.com/index.html'
 
 const faqQuestion1 = document.getElementById('faq-question-1')
 const faqQuestion2 = document.getElementById('faq-question-2')

@@ -54,7 +54,7 @@
   import './styles/style.css'
 
 /** domain */ 
-const domainName = 'http://localhost:3000'
+const domainName = 'http://www.googlywiggly.com'
 
 /** company latitude && longitude */
 const companyLat = '38.8976997'

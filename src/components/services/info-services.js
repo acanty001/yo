@@ -1,8 +1,8 @@
 const myApp = require('../../index.js')
 
-const domainName1 = 'http://localhost:3000'
-const domainName2 = 'http://localhost:3000/'
-const domainName3 = 'http://localhost:3000/index.html'
+const domainName1 = 'http://www.googlywiggly.com'
+const domainName2 = 'http://www.googlywiggly.com/'
+const domainName3 = 'http://www.googlywiggly.com/index.html'
 
 // info service arrows
 const infoServiceLeftArrow = document.getElementById('info-services-left-arrow')

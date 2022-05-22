@@ -3,7 +3,7 @@ const myApp = require('../../index.js')
 // company search tab btns
 const csFindLocation = document.getElementById('cs-find-a-location-btn')
 
-const domainName = 'http://localhost:3000'
+const domainName = 'http://www.googlywiggly.com'
 
 // tabs
 const csTabsHeader = document.getElementById('cs-tabs-header')
@@ -55,7 +55,7 @@ class CompanySearch {
 
   runCsFindLocation() {
     // find location clicked
-    if (window.location.href === `${domainName}/index.html` || window.location.href === `${domainName}/` || window.location.href === `${domainName}/index.html#how-we-operate`) {
+    if (window.location.href === `${domainName}/index.html` || window.location.href === `${domainName}/` || window.location.href === `${domainName}/#how-we-operate`) {
       csFindLocation.addEventListener('click', () => {
         csFindLocation.className = 'cs-tab-selected'
 
@@ -73,7 +73,7 @@ class CompanySearch {
   }
 
   runCsTab1SearchBtn() {
-    if (window.location.href === `${domainName}/index.html` || window.location.href === `${domainName}/` || window.location.href === `${domainName}/index.html#how-we-operate`) {
+    if (window.location.href === `${domainName}/index.html` || window.location.href === `${domainName}/` || window.location.href === `${domainName}/#how-we-operate`) {
 
       csTab1SearchBtn.addEventListener('click', () => {
 

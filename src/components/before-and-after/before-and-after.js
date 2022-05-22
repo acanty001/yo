@@ -18,7 +18,7 @@ const beforeAfterCardObj = {
 }
 let beforeAfterCount = 0
 
-const domainName = 'http://localhost:3000'
+const domainName = 'http://www.googlywiggly.com'
 
 class BeforeAndAfter {
   constructor() {
