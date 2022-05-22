@@ -55,7 +55,7 @@ class CompanySearch {
 
   runCsFindLocation() {
     // find location clicked
-    if (window.location.href === `${domainName}/index.html` || window.location.href === `${domainName}/` || window.location.href === `${domainName}/#how-we-operate` || window.location.href === domainName) {
+    if (window.location.href === `${domainName}/index.html` || window.location.href === `${domainName}/` || window.location.href === `${domainName}/#how-we-operate` || window.location.href === `${domainName}/#services` || window.location.href === domainName) {
       csFindLocation.addEventListener('click', () => {
         csFindLocation.className = 'cs-tab-selected'
 
@@ -73,7 +73,7 @@ class CompanySearch {
   }
 
   runCsTab1SearchBtn() {
-    if (window.location.href === `${domainName}/index.html` || window.location.href === `${domainName}/` || window.location.href === `${domainName}/#how-we-operate` || window.location.href === domainName) {
+    if (window.location.href === `${domainName}/index.html` || window.location.href === `${domainName}/` || window.location.href === `${domainName}/#how-we-operate` || window.location.href === `${domainName}/#services` || window.location.href === domainName) {
 
       csTab1SearchBtn.addEventListener('click', () => {
 
@@ -243,10 +243,7 @@ class CompanySearch {
       })
 
     }
-  }
-  
-
- 
+  } 
 }
 
 const companySearch = new CompanySearch()

@@ -28,7 +28,7 @@ class BeforeAndAfter {
   }
 
   cardClick() {
-    if (window.location.href === `${domainName}/index.html` || window.location.href === `${domainName}/` || window.location.href === `${domainName}/#how-we-operate` || window.location.href === domainName) {
+    if (window.location.href === `${domainName}/index.html` || window.location.href === `${domainName}/` || window.location.href === `${domainName}/#how-we-operate` || window.location.href === `${domainName}/#services` || window.location.href === domainName) {
       for (let i = 0; i < beforeAfterCardArr.length; i++) {
         beforeAfterCardArr[i].addEventListener('click', () => {
           console.log(i)
@@ -86,7 +86,7 @@ class BeforeAndAfter {
   }
 
   modalClose() {
-    if (window.location.href === `${domainName}/index.html` || window.location.href === `${domainName}/` || window.location.href === `${domainName}/#how-we-operate` || window.location.href === domainName) {
+    if (window.location.href === `${domainName}/index.html` || window.location.href === `${domainName}/` || window.location.href === `${domainName}/#how-we-operate` || window.location.href === `${domainName}/#services` || window.location.href === domainName) {
       beforeAfterModalCloseBtn.addEventListener('click', () => {
         beforeAfterModal.className = 'before-and-after-modal hide-container'
       })

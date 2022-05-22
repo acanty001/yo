@@ -31,7 +31,7 @@ class Reviews {
   }
 
   reviewTextArea() {
-    if (window.location.href === `${domainName}/index.html` || window.location.href === `${domainName}/` || window.location.href === `${domainName}/#how-we-operate` || window.location.href === domainName) {
+    if (window.location.href === `${domainName}/index.html` || window.location.href === `${domainName}/` || window.location.href === `${domainName}/#how-we-operate` || window.location.href === `${domainName}/#services` || window.location.href === domainName) {
       reviewTextArea.addEventListener('keydown', () => {
         if (starsSelected && reviewTextArea.value.length > 0) {
           reviewSubmitBtn.style.backgroundColor = 'rgb(240, 94, 124)'
@@ -49,7 +49,7 @@ class Reviews {
   }
 
   reviewStars() {
-    if (window.location.href === `${domainName}/index.html` || window.location.href === `${domainName}/` || window.location.href === `${domainName}/#how-we-operate` || window.location.href === domainName) {
+    if (window.location.href === `${domainName}/index.html` || window.location.href === `${domainName}/` || window.location.href === `${domainName}/#how-we-operate` || window.location.href === `${domainName}/#services` || window.location.href === domainName) {
       // "mouseover"
       for (let i = 0; i < reviewStarArr.length; i++) {
         reviewStarArr[i].addEventListener('mouseover', (event) => {
@@ -101,7 +101,7 @@ class Reviews {
   }
 
   reviewSubmitBtn() {
-    if (window.location.href === `${domainName}/index.html` || window.location.href === `${domainName}/` || window.location.href === `${domainName}/#how-we-operate` || window.location.href === domainName){
+    if (window.location.href === `${domainName}/index.html` || window.location.href === `${domainName}/` || window.location.href === `${domainName}/#how-we-operate` || window.location.href === `${domainName}/#services` || window.location.href === domainName){
       reviewSubmitBtn.addEventListener('mouseover', () => {
         if (reviewSubmitBtn.style.backgroundColor === 'rgb(113, 113, 113)') {
           reviewSubmitBtn.style.cursor = 'not-allowed'

@@ -32,7 +32,7 @@ class Faqs {
   }
 
   questionClick() {
-    if (window.location.href === `${domainName}/index.html` || window.location.href === `${domainName}/` || window.location.href === `${domainName}/#how-we-operate` || window.location.href === domainName) {
+    if (window.location.href === `${domainName}/index.html` || window.location.href === `${domainName}/` || window.location.href === `${domainName}/#how-we-operate` || window.location.href === `${domainName}/#services` || window.location.href === domainName) {
       for (let i = 0; i < faqQuestionArr.length; i++) {
         faqQuestionArr[i].addEventListener('click', () => {
           for (let kyu = 0; kyu < faqQuestionArr.length; kyu++) {

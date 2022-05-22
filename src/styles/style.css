@@ -10024,10 +10024,13 @@ button {
     height: 90%;
     overflow-x: hidden;
     overflow-y: scroll;
+    padding: 1rem;
   }
 
   .before-and-after-modal-contents {
     grid-template-columns: repeat(1, 1fr);
+    justify-items: center;
+    align-content: center;
   }
 
   /* faqs */
