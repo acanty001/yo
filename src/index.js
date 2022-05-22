@@ -184,8 +184,6 @@ let updatedStorageInfo = {
   }
 }
 
-
-
 document.addEventListener('readystatechange', () => {
   console.log(document.readyState)
   if (document.readyState === 'loading') {
@@ -6430,3 +6428,5 @@ export {
   companyServicesObj,
   updatedStorageInfo
 }
+
+import './styles/style.css'

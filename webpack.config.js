@@ -1,5 +1,6 @@
 const path = require('path')
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const webpack = require('webpack')
 const dotenv = require('dotenv')
 
@@ -34,7 +35,7 @@ module.exports = {
     rules: [
       {
         test: /\.css$/i,
-        use: ["style-loader", "css-loader"]
+        use: [MiniCssExtractPlugin.loader, "css-loader"]
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
@@ -49,6 +50,7 @@ module.exports = {
   },
   plugins: [
     new NodePolyfillPlugin(),
-    new webpack.DefinePlugin(envKeys)
+    new webpack.DefinePlugin(envKeys),
+    new MiniCssExtractPlugin()
   ]
 }
