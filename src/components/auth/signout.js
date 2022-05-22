@@ -2,6 +2,8 @@ const myApp = require('../../index.js')
 
 const signOutBtn1 = document.getElementById('signout-btn-1')
 
+const domainName = 'http://www.googlywiggly.com'
+
 class SignOut {
   constructor() {
 
@@ -27,7 +29,7 @@ class SignOut {
         localStorage.removeItem('service4Price')
         localStorage.removeItem('service5Price')
 
-        window.location.href = 'http://localhost:3000'
+        window.location.href = domainName
       }
     })
   }
