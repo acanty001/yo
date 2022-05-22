@@ -10029,6 +10029,7 @@ button {
 
   .before-and-after-modal-contents {
     grid-template-columns: repeat(1, 1fr);
+    padding: 1rem;
     justify-items: center;
     align-content: center;
   }
