@@ -2,7 +2,7 @@ const myApp = require('../../index.js')
 
 const signOutBtn1 = document.getElementById('signout-btn-1')
 
-const domainName = 'http://www.googlywiggly.com'
+const domainName = 'https://www.googlywiggly.com'
 
 class SignOut {
   constructor() {

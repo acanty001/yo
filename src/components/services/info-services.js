@@ -1,6 +1,6 @@
 const myApp = require('../../index.js')
 
-const domainName = 'http://www.googlywiggly.com'
+const domainName = 'https://www.googlywiggly.com'
 
 // info service arrows
 const infoServiceLeftArrow = document.getElementById('info-services-left-arrow')

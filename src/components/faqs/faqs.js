@@ -1,6 +1,6 @@
 const myApp = require('../../index')
 
-const domainName = 'http://www.googlywiggly.com'
+const domainName = 'https://www.googlywiggly.com'
 
 const faqQuestion1 = document.getElementById('faq-question-1')
 const faqQuestion2 = document.getElementById('faq-question-2')

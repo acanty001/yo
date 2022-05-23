@@ -2927,9 +2927,13 @@ header {
   margin: 0.50rem 0rem;
 }
 
+.career-modal-application-field label {
+  width: 35%;
+}
+
 .career-modal-application-field select,
 .career-modal-application-field input {
-  width: 100%;
+  width: 60%;
   padding: 1rem;
   font-size: 0.90em;
 }
@@ -10366,7 +10370,6 @@ button {
   .faqs-reviews-container {
     margin: 55rem auto 0rem;
   }
-
 }
 
 

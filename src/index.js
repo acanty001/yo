@@ -6428,5 +6428,3 @@ export {
   companyServicesObj,
   updatedStorageInfo
 }
-
-// import './styles/style.css'

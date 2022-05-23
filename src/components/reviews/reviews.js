@@ -1,7 +1,7 @@
 const myApp = require('../../index.js')
 const { v4: uuidv4 } = require('uuid')
 
-const domainName = 'http://www.googlywiggly.com'
+const domainName = 'https://www.googlywiggly.com'
 
 const reviewTextArea = document.getElementById('review-textarea')
 const reviewSubmitBtn = document.getElementById('review-submit')

@@ -3,7 +3,7 @@ const myApp = require('../../index.js')
 // company search tab btns
 const csFindLocation = document.getElementById('cs-find-a-location-btn')
 
-const domainName = 'http://www.googlywiggly.com'
+const domainName = 'https://www.googlywiggly.com'
 
 // tabs
 const csTabsHeader = document.getElementById('cs-tabs-header')
