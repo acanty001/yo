@@ -83,9 +83,6 @@ const bookingModalS3RenderCalendar = () => {
 
 bookingModalS3RenderCalendar()
 
-
-
-
 const bookingModalS3 = document.getElementById('booking-modal-s3')
 const bookingModalS3Close = document.getElementById('booking-modal-s3-close')
 const bookingModalS3BodyLeft = document.getElementById('booking-modal-s3-body-left')

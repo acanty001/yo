@@ -4,4 +4,5 @@ googlywiggly.key
 server.key
 server.csr
 server.crt
+www_googlywiggly_com.key
 node_modules/
